@@ -1,8 +1,11 @@
 ---
 title: "Data test"
 author: "Victor Mandela"
-date: "October 17, 2019"
+date: "October 18, 2019"
 output:
+  html_document:
+    df_print: paged
+  pdf_document: default
   word_document: default
 ---
 
@@ -24,7 +27,7 @@ question5$End_date <- dmy(question5$End_date)
 
 This is a report for the questions of the data test from Tiny Totos Kenya.
 
-## Solutions to question one
+## Solutions to question one part 1
 
 
 ```{r echo=FALSE}
@@ -34,13 +37,90 @@ kable(question1[1:4,], caption = "Column and Row averages.")
 
 The table above shows the row and column averages.
 
-## Solutions for question 2 
+## Solutions for question part two and three 
 
 This are the solutions to question 1 part two about cumulative unit sales from January 2015 to December 2017. 
 
-```{r pressure, echo=FALSE}
+```{r cumulative, echo=FALSE}
 kable(question2[1:3,], caption = "Cumulative Unit sales.")
-qplot(data= question2,aes(x=X1))
+question2 <- question2 %>% gather(Month,unit_sales,(-X1))
+
+question2 %>% ggplot(aes(x= Month,y=unit_sales, fill= X1))+ geom_bar(stat = "identity",position = "dodge")+facet_wrap(~X1)+coord_flip()
+
 ```
 
+## Solutions for question 2 part a
 
+This is the filled blank spaces showing the respective percentages.
+
+```{r echo=FALSE}
+#question1 %>% slice(1:) %>% summarise_all()
+kable(que2[1:8,], caption = "Filled blank spaces for percentages.")
+
+```
+ The figure that follows show daycare and their percentages. Total of meal served and daycare service offered to each of the individual children.
+ 
+```{r echo=FALSE}
+que2 %>% slice(-c(7:8))%>%   ggplot(aes(x= `Name of Daycare`,y=Total))+ geom_bar(stat = "identity", fill = "blue")
+```
+ 
+## Solutions for question 3
+
+This table represents the list of attendance of children from January to march for 13 children arranged in alphabetical order.
+
+```{r echo=FALSE}
+que3 <- que3 %>% arrange(Name)
+kable(que3[1:12,], caption = "Name in alphabetical order.")
+
+```
+
+This table below shows children who attended more ten times in the month of February.
+
+```{r echo=FALSE}
+more10 <- que3 %>% filter(Feb>10)
+kable(more10[1:6,], caption = "February attendance exceeding 10 days.")
+
+```
+
+It shows that only 6 had attendance above 10 days in the month of February.
+
+## Solutions for question 4
+
+The following is an analysis of children aged 3- 4 years of age.
+
+```{r echo=FALSE}
+que4 <- que4 %>% gather(response,value,c("YES", "NO" ))
+cognitive <- que4 %>% filter(Domain =="Cognitive")
+cognitive %>% ggplot(aes(x=Questions, y = value, fill=response))+geom_bar(stat = "identity", position = "dodge")+ coord_flip()
+```
+
+The figure above shows that in term of cognitive ability all children could 
+read to instructions, use a potty and both say and respond to their name. On the other hand, 85.7% of the children could identify group objects and identify shapes while 14.3% could not.
+
+```{r echo=FALSE}
+Physical <- que4 %>% filter(Domain =="Physical")
+Physical %>% ggplot(aes(x=Questions, y = value, fill=response))+geom_bar(stat = "identity", position = "dodge")+ coord_flip()
+```
+
+The figure above shows that in term of physical ability all children could 
+respond to music, feed on their own and had good eye - hand coordination. identify shapes while 14.3% could not.
+
+```{r echo=FALSE}
+Emotional <- que4 %>% filter(Domain =="Social/ Emotional")
+Emotional %>% ggplot(aes(x=Questions, y = value, fill=response))+geom_bar(stat = "identity", position = "dodge")+ coord_flip()
+```
+
+The figure above shows that in term of social or emotional ability all children could interact with their peers and respond to positive praise. However, 85% of the children could learn to share while 15 percernt could not easily learn to share. Finally, it shows that  71.42% of the children could show basic courtesy while 28.58 could not.
+
+## Solutions to question five
+
+This following table shows a cleaned data set and a brief description follows.
+
+```{r echo=FALSE}
+#question1 %>% slice(1:) %>% summarise_all()
+kable(question5[1:18,], caption = "Cleaned data of payments.")
+```
+
+The table above shows payment per child to three different daycares, from the date they began the payment to the last date covered by the specific payment. Payment is in shillings.
+
+Note: Each row respresents an differnt payment and each column a different characteristic.
