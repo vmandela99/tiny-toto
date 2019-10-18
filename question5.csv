@@ -1,0 +1,19 @@
+Number,Daycare,Name of child,Start_date,End_date,Payment(Kshs)
+1,BF_Daycare,Njoki,06.08.18,08.08.18,100
+1,BF_Daycare,Njoki,10.9.18,5.11.18,100
+1,BF_Daycare,Njoki,6.11.18,31.12.18,100
+2,BF_Daycare,Pendo,3.10.18,14.11.18,100
+2,BF_Daycare,Pendo,15.11.18,17.12.18,100
+2,BF_Daycare,Pendo,29.04.19,17.06.19,100
+3,BF_Daycare,Nyambura,15.7.18,14.8.18,100
+3,BF_Daycare,Nyambura,15.8.18,12.9.18,100
+3,BF_Daycare,Nyambura,15.10.18,17.01.18,100
+17,YV_Daycare,Faith,04.03.19,10.04.19,100
+24,YV_Daycare,Maina,04.03.19,03.04.19,100
+24,YV_Daycare,Maina,04.04.19,04.05.19,100
+59,YV_Daycare,Kakui,06.03.19,08.05.19,100
+60,Pre_Daycare,Njeri,05.03.19,07.05.19,30
+60,Pre_Daycare,Njeri,08.05.19,13.06.19,100
+61,Pre_Daycare,Mwai,08.05.19,13.06.19,50
+61,Pre_Daycare,Mwai,05.03.19,07.05.19,100
+62,Pre_Daycare,Ngendo,01.03.19,20.05.19,100
